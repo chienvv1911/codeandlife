@@ -17,6 +17,9 @@ const PostDetailPage = ({  match }) => {
         postDetail && 
         <div>
             <p>{postDetail.title}</p>
+            <div dangerouslySetInnerHTML={{ __html: postDetail.content }}>
+            </div>
+            
         </div>
     )
 }
