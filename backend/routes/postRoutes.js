@@ -30,7 +30,7 @@ router.get('/', async (req, res) => {
 
 router.get("/:id", async (req, res) => {
     try {
-        const postDetail = await Post.find({id: req.params.id});
+        const postDetail = await Post.findById(req.params.id);
         res.json(postDetail);
     } catch (error) {
         console.error(error);
