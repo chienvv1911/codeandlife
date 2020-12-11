@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from 'axios'
+import './css/index.scss'
 import UserContext from "./context/UserContext";
+import Header from './components/layout/Header';
 import HomePage from "./pages/HomePage";
 import PostDetailPage from "./pages/PostDetailPage";
 import RegisterPage from "./pages/RegisterPage";
@@ -45,6 +47,7 @@ const App = () => {
   return (
     <Router>
       <UserContext.Provider value={{userData, setUserData}}>
+        <Header />
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/posts/:id" component={PostDetailPage} />
