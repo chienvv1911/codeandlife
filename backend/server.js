@@ -12,7 +12,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use('/api/posts', postRoutes)
-app.use('api/users', userRoutes)
+app.use('/api/users', userRoutes)
 
 const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => console.log(`Server backend is running in PORT ${PORT}`))
