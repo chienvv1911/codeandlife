@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const userModel = require("../models/userModel");
 const User = require('../models/userModel')
 const auth = require('../middleware/auth')
 
@@ -115,4 +114,10 @@ router.post("/isvalidtoken", async (req, res) => {
         return res.status(500).json({ error })
     }
 })
+
+router.get("/", auth, async (req, res) => {
+    const user = await User.findById(req.user);
+    res.json(user);
+})
+
 module.exports = router;
