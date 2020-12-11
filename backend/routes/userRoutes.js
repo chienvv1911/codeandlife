@@ -3,6 +3,7 @@ const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const userModel = require("../models/userModel");
 const User = require('../models/userModel')
+const auth = require('../middleware/auth')
 
 router.post("/register", async (req, res) => {
   try {
@@ -86,4 +87,32 @@ router.post("/login", async (req, res) => {
     }
 })
 
+router.delete("/delete", auth, async(req, res) => {
+    try {
+        const deleteUserResult = await User.findByIdAndDelete(req.user);
+        res.json(deleteUserResult);
+    } catch (error) {
+        return res.status(500).json({ error })
+    }
+})
+
+
+router.post("/isvalidtoken", async (req, res) => {
+    try {
+        const token = req.header("x-auth-token");
+        console.log('here', token);
+        if(!token) return res.json(false);
+
+        const verified = jwt.verify(token, process.env.JWT_SECRET);
+        if(!verified) return res.json(false);
+
+        const user = await User.findById(verified.id);
+        if(!user) return res.json(false);
+
+        return res.json(true);
+
+    } catch (error) {
+        return res.status(500).json({ error })
+    }
+})
 module.exports = router;
