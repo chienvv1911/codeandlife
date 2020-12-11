@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "scripts": {},
+  "scripts": {
+    "dev": "concurrently \"cd backend && node server.js \" \"cd frontend && npm start\""
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chienvv1911/codeandlife.git"
@@ -17,6 +19,7 @@
   "homepage": "https://github.com/chienvv1911/codeandlife#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "concurrently": "^5.3.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
