@@ -15,7 +15,7 @@ const HomePage = () => {
     }, [])
 
     return (
-        listPosts && listPosts.length > 0 && <div>
+        listPosts && listPosts.length > 0 && <div className="container">
             {
                listPosts.map((post, index) => <PostCard post={post} key={index} />) 
             }
