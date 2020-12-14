@@ -1,15 +1,26 @@
 import React, { useState } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import axios from '../utils/api/baseAxios';
 
 const CreatePostPage = () => {
     const [title, setTitle] = useState("");
     const [tag, setTag] = useState("");
     const [content, setContent] = useState("");
 
-    const createPostHandler = (e) => {
+    const createPostHandler = async (e) => {
         e.preventDefault();
-
+        try {
+            await axios.post('api/posts', {
+                title,
+                tag, 
+                content,
+                createdAt: new Date()
+            })
+            window.location.href= "/";
+        } catch (error) {
+            
+        }
     }
 
     const toolbarOptions = [
@@ -34,8 +45,8 @@ const CreatePostPage = () => {
 
     return (
         <div className="container">
-            <input type="text" placeholder="Title" className="form-control" value={title} onChange={e => setTitle} />
-            <input type="text" placeholder="Tags" className="form-control my-3" value={tag} onChange={e => setTag} />
+            <input type="text" placeholder="Title" className="form-control" value={title} onChange={e => setTitle(e.target.value)} />
+            <input type="text" placeholder="Tags" className="form-control my-3" value={tag} onChange={e => setTag(e.target.value)} />
             <ReactQuill theme="snow" value={content} onChange={setContent}  
                 modules={{
                     toolbar: toolbarOptions
