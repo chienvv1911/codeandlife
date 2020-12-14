@@ -7,6 +7,5 @@ export async function getPostLists() {
 
 export async function getPostDetail(id) {
     const { data } = await axios.get(`http://localhost:3002/api/posts/${id}`);
-    debugger;
     return data;
 }

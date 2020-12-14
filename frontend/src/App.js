@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import axios from 'axios'
+import axios from './utils/api/baseAxios'
 import './css/index.scss'
 import UserContext from "./context/UserContext";
 import Header from './components/layout/Header';
@@ -22,14 +22,14 @@ const App = () => {
             localStorage.setItem("auth-token", "");
             token = "";
         }
-        const tokenIsValid = await axios.post("http:localhost:3002/api/users/isvalidtoken", null, {
+        const tokenIsValid = await axios.post("api/users/isvalidtoken", null, {
             headers: {
                 "x-auth-token": token
             }
         });
 
         if(tokenIsValid.data) {
-            const userData = await axios.get("http:localhost:3002/api/users", {
+            const userData = await axios.get("api/users", {
                 headers: {
                     "x-auth-token": token
                 }
