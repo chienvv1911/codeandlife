@@ -6,6 +6,7 @@ import UserContext from "./context/UserContext";
 import Header from './components/layout/Header';
 import HomePage from "./pages/HomePage";
 import PostDetailPage from "./pages/PostDetailPage";
+import CreatePostPage from "./pages/CreatePostPage";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 
@@ -51,6 +52,7 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/posts/:id" component={PostDetailPage} />
+          <Route path="/admin/post/create" component={CreatePostPage} />
           <Route path="/auth/register" component={RegisterPage} />
           <Route path="/auth/login" component={LoginPage} />
         </Switch>

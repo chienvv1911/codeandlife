@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
     return (
         <header className="container">
             <div>
-                <h1>CODEANDLIFE BLOG</h1>
+                <Link to="/">CODEANDLIFE BLOG</Link>
             </div>
 
             <div className="cv-center">
@@ -14,10 +15,10 @@ const Header = () => {
             <div className="m-l-auto">
                 <ul>
                     <li>
-                        <a>About</a>
+                        <Link to="/about">About</Link>
                     </li>
                     <li>
-                        <a>Contact</a>
+                        <Link to="/contact">Contact</Link>
                     </li>
                 </ul>
             </div>
