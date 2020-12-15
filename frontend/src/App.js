@@ -4,6 +4,7 @@ import axios from './utils/api/baseAxios'
 import './css/index.scss'
 import UserContext from "./context/UserContext";
 import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
 import HomePage from "./pages/HomePage";
 import PostDetailPage from "./pages/PostDetailPage";
 import CreatePostPage from "./pages/CreatePostPage";
@@ -56,6 +57,7 @@ const App = () => {
           <Route path="/auth/register" component={RegisterPage} />
           <Route path="/auth/login" component={LoginPage} />
         </Switch>
+        <Footer />
       </UserContext.Provider>
     </Router>
   );
