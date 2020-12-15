@@ -10,7 +10,7 @@ const CreatePostPage = () => {
     const createPostHandler = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('api/posts', {
+            await axios.post('posts', {
                 title,
                 tag, 
                 content,

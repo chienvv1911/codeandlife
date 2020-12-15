@@ -1,11 +1,16 @@
-import axios from 'axios'
+import axios from '../api/baseAxios';
 
 export async function getPostLists() {
-    const { data } = await axios.get('http://localhost:3002/api/posts');
+    const { data } = await axios.get('posts');
     return data;
 }
 
 export async function getPostDetail(id) {
-    const { data } = await axios.get(`http://localhost:3002/api/posts/${id}`);
+    const { data } = await axios.get(`posts/${id}`);
+    return data;
+}
+
+export async function deletePost(id) {
+    const { data } = await axios.delete(`posts/${id}`)
     return data;
 }

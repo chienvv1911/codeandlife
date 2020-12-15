@@ -23,14 +23,14 @@ const App = () => {
             localStorage.setItem("auth-token", "");
             token = "";
         }
-        const tokenIsValid = await axios.post("api/users/isvalidtoken", null, {
+        const tokenIsValid = await axios.post("users/isvalidtoken", null, {
             headers: {
                 "x-auth-token": token
             }
         });
 
         if(tokenIsValid.data) {
-            const userData = await axios.get("api/users", {
+            const userData = await axios.get("users", {
                 headers: {
                     "x-auth-token": token
                 }
